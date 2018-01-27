@@ -9,7 +9,12 @@ let client = new Client({
 
 client.sendCommand('summary', function (err, response) {
   assert(!err)
-  assert.equal(Object.keys(response)[0], 'STATUS')
+  console.log(response)
+  assert.equal(Object.keys(response)[1], 'SUMMARY')
+  // console.log(response['SUMMARY'][0]["GHS 5s"])
 })
-
-assert(client)
+client.sendCommand('pools', function (err, response) {
+  assert(!err)
+  console.log(response)
+  assert.equal(Object.keys(response)[1], 'POOLS')
+})
